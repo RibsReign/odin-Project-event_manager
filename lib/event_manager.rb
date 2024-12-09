@@ -10,7 +10,7 @@ end
 
 def legislators_by_zipcode(zipcode)
   civic_info = Google::Apis::CivicinfoV2::CivicInfoService.new
-  civic_info.key = 'AIzaSyClRzDqDh5MsXwnCWi0kOiiBivP6JsSyBw'
+  civic_info.key = File.read('api').strip
 
   begin
     civic_info.representative_info_by_address(
@@ -57,7 +57,6 @@ contents.each do |row|
   File.open(filename, 'w') do |file|
     file.puts form_letter
   end
-
 end
 # contents = File.read('event_attendees.csv')
 # puts contents
